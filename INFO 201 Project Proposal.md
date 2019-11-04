@@ -59,7 +59,7 @@ Number of Attributes: 1
 
 ### 4.0 Information Visualization
 <br><br />
-![visualization 1](homeless_stat.png/)
+![visualization 1](viz/homeless_stat.png/)
 This visualization shows the homelessness statistics by state. We are planning to study on the geographic factor and GDP on homelessness.
 
 ![visualization 1](https://external-preview.redd.it/Ix5CzDJHkNle5HEdb26EGgT_bJa9-c3Cbfa5WgK5ZJk.jpg?width=960&crop=smart&auto=webp&s=64634268fcbfbd8cb064ddefc8e7ac5f1bed8aed)
