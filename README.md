@@ -5,4 +5,4 @@ The threat from terrorism remains high and could worsen over the decade. There a
 Our group project aims to gain insights from data visualizations about the relationship among geographcial regions, weapon types, and attack targets in order to analyze the essence of global terrorism.
 
 Link to project proposal:
-https://github.com/azerous1/info-201-AF4-project/wiki/Project-Proposal
+https://github.com/azerous1/info-201-AF4-project/blob/master/INFO_201_Project_Proposal.md
