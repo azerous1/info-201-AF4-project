@@ -39,7 +39,7 @@ Autumn 2019 <br><br />
 
 > RQ2: What is the trend of global terrorism throughout the history in certain decades? What is the trend of US terrorism throughout history in certain decades?
 
-> RQ3: What country has been affected by terrorism?
+> RQ3: What country(s) has been most affected by terrorism?
 
 
 ### 3.0 Possible data sets
