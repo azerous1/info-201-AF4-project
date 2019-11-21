@@ -4,6 +4,7 @@ library(plotly)
 library(ggplot2)
 library(shiny)
 
+
 homeless_by_county <- read.csv(file = "./data/arranged_data.csv")
 
 data <- homeless_by_county %>%
