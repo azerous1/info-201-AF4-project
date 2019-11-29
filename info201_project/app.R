@@ -1,7 +1,9 @@
+# install.packages("rsconnect")
 library(shiny)
 library(leaflet)
 library(dplyr)
 library(rsconnect)
+source("temp.R")
 
 # The dataset of terroism attack from 2000 to 2018
 attack_data <- read.csv(
@@ -32,8 +34,8 @@ page_two <- tabPanel(
 )
 
 page_three <- tabPanel(
-  titlePanel("Data Visualization"),
-  h1("Global Terroist attack from 2000 to 2018"),
+  titlePanel("Visualization 1"),
+  h1("Global Terrorist attack from 2000 to 2018"),
   sidebarLayout(
     sidebarPanel(
       sliderInput(
@@ -51,20 +53,55 @@ page_three <- tabPanel(
 )
 
 page_four <- tabPanel(
-  titlePanel("Conclusion"),
-  mainPanel(
-    tabsetPanel(
-      tabPanel("Project Conclusion", ""),
-      tabPanel("Prjoject implication", "")
+  titlePanel("Visualization 2"),
+  sidebarPanel(
+    sliderInput(
+      inputId = "time", # key this value will be assigned to
+      label = "Year", # label to display alongside the slider
+      min = 2000, # minimum slider value
+      max = 2018, # maximum slider value
+      value = 2000 # starting value for the slider
     )
+  ),
+  mainPanel(
+    plotOutput("weapon")
   )
 )
 
 page_five <- tabPanel(
+  titlePanel("Visualization 3"),
+  mainPanel(
+    tabsetPanel(
+      tabPanel("Project Conclusion", ""),
+      tabPanel("Project implication", "")
+    )
+  )
+)
+
+page_six <- tabPanel(
+  titlePanel("Conclusion"),
+  mainPanel(
+    tabsetPanel(
+      tabPanel("Project Conclusion", ""),
+      tabPanel("Project implication", "")
+    )
+  )
+)
+
+page_seven <- tabPanel(
   titlePanel("Tech-Report"),
   mainPanel(
     tabsetPanel(
       tabPanel("Technical Report", "")
+    )
+  )
+)
+
+page_eight <- tabPanel(
+  titlePanel("About Team"),
+  mainPanel(
+    tabsetPanel(
+      #tabPanel("Technical Report", "")
     )
   )
 )
@@ -76,11 +113,16 @@ ui <- navbarPage(
   page_two,
   page_three,
   page_four,
-  page_five
+  page_five,
+  page_six,
+  page_seven,
+  page_eight
 )
 
 # Server 
 server <- function(input, output) {
+  
+  # Visualization 1
   output$attack_map <- renderLeaflet({
     filtered_data <- attack_data %>%
       filter(year == input$year)
@@ -100,6 +142,19 @@ server <- function(input, output) {
         radius = sqrt(filtered_data$number_killed) * 2,
         stroke = FALSE
       )
+  })
+  
+  # Visualization 2
+  output$weapon <- renderPlot({
+
+    selected_year <- filtered_df %>% filter(year == input$time)
+    ggplot(data = selected_year) +
+      coord_flip() +
+      geom_bar(mapping = aes(x = weapon_type, y = casualty), 
+               stat = "identity", fill = "gold", alpha = "0.75") +
+      labs(title = "Casualty vs. Weapon Types from 2000 to 2018",
+           x = "Weapon Types",
+           y = "Casualty")
   })
 }
 
