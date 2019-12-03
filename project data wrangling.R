@@ -37,6 +37,8 @@ write.csv(data_2018, "./data/post_2000_arranged_terriosm_data.csv", row.names = 
 
 # grouped by - country, v
 
+
+
   
 
 
