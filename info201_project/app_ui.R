@@ -2,6 +2,7 @@ library(httr)
 library(jsonlite)
 library(shiny)
 library(eeptools)
+source(app_server.R)
 
 
 # the list of tab panel on our main page of shiny
@@ -48,13 +49,21 @@ page_three <- tabPanel(
         
         
         
-        ),
+      ),
+      # Data visualization of attack type and casulty number
       tabPanel(
-        "Visualization 3"
-        
-        
-        
+        "Visualization 3",
+        sidebarPanel(
+          selectInput(
+            inputId = "attack_type", # key this value will be assigned to
+            label = "Attack type", # label to display alongside the slider
+            choices = attack_data$attack_type
+          )
+        ),
+        mainPanel(
+          plotOutput("attack_casualty")
         )
+      )
     )
   )
 )
@@ -91,3 +100,4 @@ ui <- navbarPage(
   page_five,
   page_six
 )
+

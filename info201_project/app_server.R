@@ -14,6 +14,11 @@ attack_data <- read.csv(
   stringsAsFactors = F
 )
 
+# Replace NA values with 0 and mutate to add “casualty” column
+attack_data[is.na(attack_data)] <- 0
+attack_data <- attack_data %>%
+  mutate(casualty = number_killed + number_injured)
+View(attack_data)
 
 server <- function(input, output) {
   
@@ -39,5 +44,21 @@ server <- function(input, output) {
       )
   })
   
- 
+  output$attack_casualty <- renderPlot({
+    vis3_data <- attack_data %>% 
+      filter(attack_type == input$attack_type) %>% 
+      group_by(year) %>% 
+      summarise(total_casualty = sum(casualty)) %>% 
+      select("year", "total_casualty")
+    
+    ggplot(data = vis3_data) +
+      coord_flip() +
+      geom_bar(mapping = aes(x = year, y = total_casualty), 
+               stat = "identity", fill = "steelblue", alpha = "0.75") +
+      labs(title = "Casualties by Attack Types from 2000 to 2018",
+           x = "Year", y = "Total Casualty") +
+      theme(text = element_text(size=15)) +
+      scale_x_continuous(breaks = 2000:2018)
+  })
 }
+
