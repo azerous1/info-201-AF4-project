@@ -40,7 +40,8 @@ In the Envisioning Cards, non-targeted Use card is referring to the people use t
 
 ### 2.0 Research questions
 
-> Through our initial research, we noticed that the motives and types of weapon used have potential impacts on the casualty of terrorist attacks. Weapon types in this case are most crucial for understanding the number of casualties in the terrorist attacks.  Therefore, our group would like to discover **_what is the potential correlations among weapons types, casualty numbers, successful rate, and regions over the last twenty years?_** If the results do turn out to be some kind of correlation among the variables, then our data analysis and visualization would be significantly helpful for government officials to gain insights about different types of terrorist attacks and hopefully to take action before any attacks occur, preventing the harm of certain weapons in certain regions to minimize the casualties.
+> Through our initial research, we noticed that the motives and types of weapon used have potential impacts on the casualty of terrorist attacks. Weapon types in this case are most crucial for understanding the number of casualties in the terrorist attacks.  Therefore, our group would like to discover **_What is the potential correlations among weapons types, attack types, and casualty numbers in the global scope by country over the last twenty years?
+_** If the results do turn out to be some kind of correlation among the variables, then our data analysis and visualization would be significantly helpful for government officials to gain insights about different types of terrorist attacks and hopefully to take action before any attacks occur, preventing the harm of certain weapons in certain regions to minimize the casualties.
 
 ### 3.0 The data set(s)
 Who created it?

@@ -11,15 +11,12 @@ attack_data <- read.csv(
   stringsAsFactors = F
 )
 
+# world map data for plotting visualtion 2 
 map.world <- read.csv(
   file = "./world_data.csv",
   stringsAsFactors = F
 )
 
-# Replace NA values with 0 and mutate to add "casualty" column
-attack_data[is.na(attack_data)] <- 0
-attack_data <- attack_data %>%
-  mutate(casualty = number_killed + number_injured)
 
 server <- function(input, output) {
   
@@ -45,7 +42,7 @@ server <- function(input, output) {
       )
   })
   
-  # Visualizaiton # 1a 
+  # Visualizaiton # 2
   output$country_map <- renderPlot({
     years <- input$year_select_2
     
@@ -77,11 +74,34 @@ server <- function(input, output) {
     map.attack[is.na(map.attack)] <- 0
     
     ggplot(map.attack, mapping = aes( x = long, y = lat, group = group )) +
-      geom_polygon(aes(fill = total_death)) 
-    
+      geom_polygon(aes(fill = total_death)) +
+      scale_fill_gradientn(colours = c('#461863','#404E88','#2A8A8C','#7FD157','#F9E53F')
+                         ,values = scales::rescale(c(0, 10, 100, 1000,10000))
+                         ,labels = comma
+                         ,breaks = c(0, 10, 100, 1000,10000)
+    ) +
+      guides(fill = guide_legend(reverse = T)) +
+      labs(fill = 'Total Casuality'
+           ,title = 'Terroist attack casuality by Country'
+           ,subtitle = 'Person per country'
+           ,x = NULL
+           ,y = NULL)+
+      theme(text = element_text(family = 'TT Arial', color = '#EEEEEE')
+            ,plot.title = element_text(size = 28)
+            ,plot.subtitle = element_text(size = 14)
+            ,axis.ticks = element_blank()
+            ,axis.text = element_blank()
+            ,panel.grid = element_blank()
+            ,panel.background = element_rect(fill = '#333333')
+            ,plot.background = element_rect(fill = '#333333')
+            ,legend.position = c(.18,.36)
+            ,legend.background = element_blank()
+            ,legend.key = element_blank()
+      ) 
+      
   })
   
-  # Visualization 2 
+  # Visualization 3
   output$weapon <- renderPlot({
     
     attack_data[is.na(attack_data)] <- 0
@@ -89,8 +109,9 @@ server <- function(input, output) {
       mutate(casualty = number_killed + number_injured)
     
     filtered_df <- attack_data %>%
-      select(year, weapon_type, casualty)
-    
+      select(year, weapon_type, casualty) %>%
+      mutate(weapon_type = recode(weapon_type, 
+            `Vehicle (not to include vehicle-borne explosives, i.e., car or truck bombs)` = 'Vehicles'))
     
     selected_year <- filtered_df %>% 
       filter(year == input$year_select_3)
@@ -103,7 +124,7 @@ server <- function(input, output) {
            y = "Casualty")
   })
   
-  #Vis #3
+  #Vis #4
   output$attack_casualty <- renderPlot({
     attack_data[is.na(attack_data)] <- 0
     attack_data <- attack_data %>%

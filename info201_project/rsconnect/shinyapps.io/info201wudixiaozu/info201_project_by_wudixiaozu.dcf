@@ -5,9 +5,9 @@ account: info201wudixiaozu
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1504852
-bundleId: 2638674
+bundleId: 2641234
 url: https://info201wudixiaozu.shinyapps.io/info201_project_by_wudixiaozu/
-when: 1575430214.77917
+when: 1575485872.60853
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: temp.R
+ignoredFiles: app_ui_clover.R|temp.R
