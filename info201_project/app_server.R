@@ -2,6 +2,7 @@ library(dplyr)
 library(shiny)
 library(scales)
 library(ggplot2)
+library(shinythemes)
 # This is the server for our project shiny
 
 # The dataset of terroism attack from 2000 to 2018

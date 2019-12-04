@@ -3,6 +3,7 @@ library(jsonlite)
 library(shiny)
 library(eeptools)
 library(leaflet)
+library(shinythemes)
 
 source("text.R")
 
@@ -44,7 +45,7 @@ page_three <- tabPanel(
         sidebarLayout(
           sidebarPanel(
             selectInput("year_select_1",
-              label = h3("Select year", style = "color: black"),
+              label = h3("Select year", style = "color: white"),
               choices = years,
               selected = "2018"
             )
@@ -56,7 +57,7 @@ page_three <- tabPanel(
         sidebarLayout(
           sidebarPanel(
             selectInput("year_select_2",
-              label = h3("Select year", style = "color: black"),
+              label = h3("Select year", style = "color: white"),
               choices = years,
               selected = "2018"
             )
@@ -72,7 +73,7 @@ page_three <- tabPanel(
         sidebarLayout(
           sidebarPanel(
             selectInput("year_select_3",
-              label = h3("Select year", style = "color: black"),
+              label = h3("Select year", style = "color: white"),
               choices = years,
               selected = "2018"
             ),
@@ -90,7 +91,7 @@ page_three <- tabPanel(
           sidebarPanel(
             selectInput(
               inputId = "attack_type", # key this value will be assigned to
-              label = "Attack type", # label to display alongside the slider
+              label =  h3("Attack Type", style = "color: white"), # label to display alongside the slider
               choices = attack_data$attack_type,
               selected = "Armed Assault"
             )
@@ -129,6 +130,7 @@ page_six <- tabPanel(
 
 # ui page
 ui <- navbarPage(
+  theme = shinytheme("superhero"),
   "Info 201 Project",
   page_one,
   page_two,

@@ -11,4 +11,5 @@ Link to technical report:
 https://github.com/azerous1/info-201-AF4-project/blob/master/info_201_tech_report.md
 
 Link to Shiny Application:
+https://info201wudixiaozu.shinyapps.io/info201_project_by_wudixiaozu/
 
