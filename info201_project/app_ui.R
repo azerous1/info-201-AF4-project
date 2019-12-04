@@ -1,8 +1,10 @@
 library(httr)
 library(jsonlite)
 library(shiny)
+library(leaflet)
 library(eeptools)
 source(app_server.R)
+library(shinythemes)
 
 
 # the list of tab panel on our main page of shiny
@@ -91,7 +93,7 @@ page_six <- tabPanel(
 )
 
 # ui page
-ui <- navbarPage(
+ui <- navbarPage( theme = shinytheme("superhero"),
   "Info 201 Project",
   page_one,
   page_two,
